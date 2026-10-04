@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sayan Talukdar – Frontend Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--text:#fff;--soft:#d0d0d0;--mute:#a0a0a0;--teal:#4fd1b5;--thin:rgba(255,255,255,.16);--thin2:rgba(255,255,255,.12);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+:root[data-theme="light"]{--bg:#fff;--text:#111;--soft:#333;--mute:#5c5c5c;--teal:#0b7a68;--thin:rgba(0,0,0,.2);--thin2:rgba(0,0,0,.12);color-scheme:light}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 60px);background:var(--bg)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 "Roboto Condensed",system-ui,sans-serif;overflow-x:hidden}
+a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--thin2)}
+.barin{max-width:900px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{position:relative;width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--thin);border-radius:8px;color:var(--text);text-decoration:none;font:700 14px "Roboto Condensed",sans-serif;letter-spacing:-.02em;flex:none}
+.logo::after{content:"";position:absolute;right:5px;bottom:5px;width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.logo:hover{border-color:var(--teal)}
+.nav{display:flex;gap:8px;align-items:center}
+.btn{font:500 14px "Roboto Condensed",sans-serif;color:var(--text);background:none;border:1px solid var(--thin);border-radius:6px;padding:7px 12px;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--teal);color:var(--teal)}
+.icon{width:36px;height:36px;padding:0;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.moon{display:none}
+:root[data-theme="light"] .sun{display:none}
+:root[data-theme="light"] .moon{display:block}
+
+/* hero */
+.hero{padding:52px 0 24px;text-align:center}
+h1{font:500 clamp(32px,6.5vw,52px)/1.1 "Rajdhani",sans-serif;letter-spacing:.01em;margin:0 0 14px}
+.role{font:500 14px "Roboto Condensed",sans-serif;color:var(--mute);margin:0 0 12px}
+.stack{display:flex;gap:8px;justify-content:center;margin:0 0 22px}
+.stack span{font:500 13px "Roboto Condensed",sans-serif;color:var(--teal);border:1px solid var(--thin);border-radius:999px;padding:3px 12px}
+.sum{max-width:36em;margin:0 auto 22px;color:var(--soft);font-size:16px}
+.contact{display:flex;gap:6px 22px;justify-content:center;flex-wrap:wrap;margin:0 0 14px;font:400 15px "Roboto Condensed",sans-serif}
+.contact a{color:var(--text);text-decoration:none}
+.contact a:hover{color:var(--teal)}
+.links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;font:400 14px "Roboto Condensed",sans-serif}
+.links a{color:var(--mute);text-decoration:none;border-bottom:1px solid var(--thin);padding-bottom:2px}
+.links a:hover{color:var(--text);border-color:var(--text)}
+
+/* resume button */
+.rw{text-align:center;margin:0 0 40px}
+.resume{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--thin);border-radius:6px;color:var(--text);text-decoration:none;font:500 13px "Roboto Condensed",sans-serif;letter-spacing:.08em}
+.resume:hover{border-color:var(--teal);color:var(--teal)}
+
+/* stats */
+.stats{border:1px solid var(--thin);border-radius:6px;padding:12px;margin:0 0 120px}
+.stats .row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.box{border:1px solid var(--thin2);border-radius:4px;padding:22px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px}
+.num{font:700 clamp(26px,5vw,36px)/1 "Roboto Condensed",sans-serif}
+.lab{font-size:12px;color:var(--mute)}
+
+/* what I do */
+.do{margin:0 0 140px}
+.do .do-label{font:700 13px "Roboto Condensed",sans-serif;color:var(--mute);text-align:center;margin:0 0 48px}
+.do-row{display:grid;grid-template-columns:1fr 1px 1fr;gap:32px}
+.do-line{background:var(--thin)}
+.do h3{font:700 18px "Roboto Condensed",sans-serif;margin:0 0 8px;letter-spacing:-.01em}
+.do p{margin:0;color:var(--soft);font-size:14px}
+
+/* timeline */
+.tl{position:relative;padding:20px 0 60px}
+.fill{position:absolute;left:50%;top:0;width:2px;margin-left:-1px;height:0;background:var(--text)}
+.item{position:relative;width:50%;margin-bottom:170px;min-height:70px}
+.item:last-child{margin-bottom:0}
+.item.l{padding-right:100px;text-align:right}
+.item.r{margin-left:50%;padding-left:100px}
+.item::before{content:"";position:absolute;top:12px;width:92px;height:2px;background:var(--text);transition:transform .5s ease}
+.item.l::before{right:0;transform-origin:right center;transform:rotate(-22deg) scaleX(0)}
+.item.r::before{left:0;transform-origin:left center;transform:rotate(22deg) scaleX(0)}
+.item.l.in::before{transform:rotate(-22deg) scaleX(1)}
+.item.r.in::before{transform:rotate(22deg) scaleX(1)}
+.item::after{content:"";position:absolute;top:5px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--text);transform:scale(0);transition:transform .3s ease,background .3s ease}
+.item.l::after{right:-8px}
+.item.r::after{left:-8px}
+.item.in::after{transform:scale(1);background:var(--teal);border-color:var(--teal)}
+.card{margin-top:34px;opacity:0;transition:opacity .5s ease .3s,transform .5s ease .3s}
+.item.l .card{transform:translateX(-30px)}
+.item.r .card{transform:translateX(30px)}
+.item.l.in .card,.item.r.in .card{opacity:1;transform:none}
+.date{display:block;font:500 14px "Roboto Condensed",sans-serif;color:var(--text)}
+.co{display:block;font:700 clamp(24px,4vw,34px)/1.1 "Roboto Condensed",sans-serif;color:var(--teal);margin:4px 0 2px;letter-spacing:-.01em}
+.jt{display:block;font:500 16px "Roboto Condensed",sans-serif;color:var(--text)}
+
+/* skills + education */
+.more{padding:40px 0 0;border-top:1px solid var(--thin);margin-top:56px}
+.more h3{font:700 13px "Roboto Condensed",sans-serif;color:var(--mute);margin:0 0 14px}
+.cat{display:grid;grid-template-columns:150px 1fr;gap:6px 20px;align-items:start;padding:9px 0}
+.cat-name{font:500 14px "Roboto Condensed",sans-serif;color:var(--mute);padding-top:5px}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badge{font:400 13px "Roboto Condensed",sans-serif;color:var(--soft);border:1px solid var(--thin);border-radius:999px;padding:4px 11px}
+.badge.main{color:var(--teal)}
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:40px}
+.edu p{margin:0 0 9px;color:var(--soft);font-size:14px}
+.edu b{color:var(--text);font-weight:500}
+footer{text-align:center;color:var(--mute);font:400 14px "Roboto Condensed",sans-serif;padding:48px 0 40px}
+
+@media (max-width:720px){
+.barin{padding:10px 16px}
+.hero{text-align:left}.sum{margin-left:0}.links,.contact{justify-content:flex-start}.stack{justify-content:flex-start}
+.do-row{grid-template-columns:1fr;gap:20px}
+.do-line{height:1px}
+.fill{left:14px}
+.item,.item.l,.item.r{width:100%;margin-left:0;padding:0 0 0 72px;text-align:left;margin-bottom:120px}
+.item:last-child{margin-bottom:0}
+.item.l::before,.item.r::before{left:14px;right:auto;width:52px;transform-origin:left center;transform:rotate(20deg) scaleX(0)}
+.item.l.in::before,.item.r.in::before{transform:rotate(20deg) scaleX(1)}
+.item.l::after,.item.r::after{left:6px;right:auto}
+.card{margin-top:18px}
+.item.l .card{transform:translateX(30px)}
+.cat{grid-template-columns:1fr}
+.cat-name{padding-top:0}
+.edu{grid-template-columns:1fr}
+}
+@media (max-width:480px){.stats .row{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.item::before,.item::after,.card{transition:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+<div class="barin">
+<a class="logo" href="#about" aria-label="Sayan Talukdar, back to top">ST</a>
+<nav class="nav" aria-label="Sections">
+<a class="btn" href="#about">About me</a>
+<a class="btn" href="#tl">Experience</a>
+<button class="btn icon" id="theme" type="button" aria-label="Switch to light mode">
+<svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+<svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+</button>
+</nav>
+</div>
+</header>
+
+<div class="wrap">
+<section class="hero" id="about">
+<h1>Sayan Talukdar</h1>
+<p class="role">Frontend engineer · Kolkata, India</p>
+<p class="stack"><span>AEM</span><span>Angular</span></p>
+<p class="sum">I build fast, accessible web interfaces for e-commerce and banking. Nearly five years across Adobe Edge Delivery Services, Angular and microfrontends, with a habit of measuring performance and then improving it.</p>
+<div class="contact">
+<a href="mailto:sayantalukdar30@gmail.com">sayantalukdar30@gmail.com</a>
+<a href="tel:+919091820455">+91 90918 20455</a>
+</div>
+<div class="links">
+<a href="#">GitHub</a>
+<a href="#">LinkedIn</a>
+<a href="#">LeetCode</a>
+</div>
+</section>
+
+<div class="rw"><a class="resume" href="Sayan_Talukdar_Resume.pdf" download="Sayan_Talukdar_Resume.pdf"><span>RESUME</span>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg></a></div>
+
+<section class="stats" aria-label="At a glance">
+<div class="row">
+<div class="box"><span class="num" id="yrs">4.7</span><span class="lab">Years of experience</span></div>
+<div class="box"><span class="num">100+</span><span class="lab">Git commits this year</span></div>
+<div class="box"><span class="num">100+</span><span class="lab">LeetCode questions solved</span></div>
+</div>
+</section>
+
+<section class="do" aria-label="What I do">
+<p class="do-label">What I do</p>
+<div class="do-row">
+<div><h3>Frontend engineering</h3><p>Responsive, accessible interfaces built with Angular, microfrontends and vanilla JavaScript on Adobe Edge Delivery Services. I focus on load time, clean SCSS and components that scale across sites.</p></div>
+<div class="do-line" role="presentation"></div>
+<div><h3>Designing UX</h3><p>Turning designs into pixel-accurate components and shaping navigation and user flows. On a banking platform this lifted user engagement by 30%.</p></div>
+</div>
+</section>
+
+<main class="tl" id="tl">
+<div class="fill" id="fill"></div>
+
+<article class="item l">
+<div class="card"><span class="date">Feb – May 2022</span><span class="co">Cognizant</span><span class="jt">Programmer Analyst Trainee</span></div>
+</article>
+
+<article class="item r">
+<div class="card"><span class="date">Jun 2022 – Jan 2025</span><span class="co">Nagarro</span><span class="jt">Engineer</span></div>
+</article>
+
+<article class="item l">
+<div class="card"><span class="date">Jan 2025 – Present</span><span class="co">Lexmark</span><span class="jt">Software Engineer 2</span></div>
+</article>
+</main>
+
+<section class="more" id="skills">
+<h3>Skills</h3>
+<div class="cat"><span class="cat-name">Frontend</span><div class="badges"><span class="badge main">Angular</span><span class="badge">JavaScript</span><span class="badge">TypeScript</span><span class="badge">HTML/CSS</span><span class="badge">SCSS</span><span class="badge">Bootstrap</span><span class="badge">Microfrontends</span></div></div>
+<div class="cat"><span class="cat-name">Adobe</span><div class="badges"><span class="badge main">Adobe Experience Manager</span><span class="badge">Edge Delivery Services</span></div></div>
+<div class="cat"><span class="cat-name">Backend and data</span><div class="badges"><span class="badge">ExpressJS</span><span class="badge">ASP.NET</span><span class="badge">.NET</span><span class="badge">GraphQL</span><span class="badge">REST APIs</span><span class="badge">MySQL</span></div></div>
+<div class="cat"><span class="cat-name">Testing</span><div class="badges"><span class="badge">Karma</span><span class="badge">Jasmine</span></div></div>
+<div class="cat"><span class="cat-name">Tools</span><div class="badges"><span class="badge">Git</span><span class="badge">Webpack</span><span class="badge">Jenkins</span><span class="badge">Visual Studio</span></div></div>
+
+<div class="edu">
+<div><h3>Education</h3>
+<p><b>B.Tech, Information Technology</b><br>Asansol Engineering College, 2022 · GPA 8.53</p></div>
+<div><h3>Learning</h3>
+<p>GATE 2022 (CSE)<br>MERN Stack Bootcamp, LearnCodeOnline, 2020<br>Python programming, Udemy, 2020</p></div>
+</div>
+</section>
+
+<footer>Sayan Talukdar · Kolkata</footer>
+</div>
+
+<script>
+(function(){
+// theme toggle (dark by default)
+var root=document.documentElement,btn=document.getElementById('theme');
+function setTheme(t){
+root.setAttribute('data-theme',t);
+btn.setAttribute('aria-label',t==='dark'?'Switch to light mode':'Switch to dark mode');
+}
+var saved=null;
+try{saved=localStorage.getItem('theme');}catch(e){}
+setTheme(saved==='light'?'light':'dark');
+btn.addEventListener('click',function(){
+var t=root.getAttribute('data-theme')==='light'?'dark':'light';
+setTheme(t);
+try{localStorage.setItem('theme',t);}catch(e){}
+});
+
+// total experience, counted from Feb 2022
+var s=new Date(2022,1,1),n=new Date();
+var m=(n.getFullYear()-s.getFullYear())*12+n.getMonth()-s.getMonth();
+document.getElementById('yrs').textContent=(Math.round(m/12*10)/10).toFixed(1);
+
+// scroll-driven timeline
+var tl=document.getElementById('tl'),fill=document.getElementById('fill');
+var items=[].slice.call(tl.querySelectorAll('.item'));
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var ys=[],endY=0;
+function measure(){
+ys=items.map(function(i){return i.offsetTop+13});
+endY=ys[ys.length-1]+90;
+}
+function update(){
+var r=tl.getBoundingClientRect();
+var y=window.innerHeight*0.6-r.top;
+var h=still?endY:Math.max(ys[0],Math.min(endY,y));
+fill.style.height=h+'px';
+items.forEach(function(it,i){it.classList.toggle('in',h>=ys[i]);});
+}
+function init(){measure();update();}
+init();
+window.addEventListener('scroll',update,{passive:true});
+window.addEventListener('resize',init);
+window.addEventListener('load',init);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(init);
+})();
+</script>
+</body>
+</html>
